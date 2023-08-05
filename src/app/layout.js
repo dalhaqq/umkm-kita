@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
         <script src='main.min.js'></script>
       </Head>
-      <body className={`${inter.className} is-boxed has-animations`}>{children}</body>
+      <body className={`${inter.className} is-boxed is-loaded has-animations`}>{children}</body>
     </html>
   )
 }

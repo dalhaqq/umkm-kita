@@ -45,11 +45,6 @@ export default function Home({ params }) {
                                 <p className="hero-paragraph">{ umkm.text1 }</p>
                                 <div className="hero-cta">
                                     <a className="button button-primary" href="#">Buy it now</a>
-                                    <div className="lights-toggle">
-                                        <input id="lights-toggle" type="checkbox" name="lights-toggle" className="switch" defaultChecked/>
-                                            <label htmlFor="lights-toggle" className="text-xs"><span>Turn me <span
-                                                className="label-text">dark</span></span></label>
-                                    </div>
                                 </div>
                             </div>
                             <div className="hero-media">
