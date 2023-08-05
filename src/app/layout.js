@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet" />
         <link rel="stylesheet" href="css/style.css" />
         <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+        <script src='main.min.js'></script>
       </Head>
       <body className={`${inter.className} is-boxed has-animations`}>{children}</body>
     </html>
