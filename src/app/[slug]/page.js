@@ -44,7 +44,7 @@ export default function Home({ params }) {
                                 <p className="hero-paragraph">{umkm.text1}</p>
                                 {umkm.wa &&
                                     <div className="hero-cta">
-                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%20saya%20ingin%20membeli%20produk%20${umkm.nama}`}>Beli sekarang</a>
+                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%2C%20saya%20ingin%20memesan%20produk%20Anda%20😁%0A%0A%5BDetail%20pesanan%5D%0ANama%20pemesan%20%3A%0AAlamat%20%3A%0ANo%20HP%20%3A%0ANama%20produk%20%3A%0AJumlah%20produk%20%3A%0APesan%20tanggal%20%3A%0AMetode%20%28diambil%20ditempat%20atau%20diantar%29%20%3A%0APembayaran%20menggunakan%20%3A%20cash%2Ftransfer%20%0A%0ANote%3A%20informasi%20selanjutnya%20dapat%20ditanyakan%20dan%20akan%20dijawab%20langsung%20oleh%20admin`}>Beli sekarang</a>
                                     </div>
                                 }
                             </div>
@@ -131,7 +131,7 @@ export default function Home({ params }) {
                                 <p className="section-paragraph">{umkm.textlast}</p>
                                 {umkm.wa &&
                                     <div className="cta-cta">
-                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%20saya%20ingin%20membeli%20produk%20${umkm.nama}`}>Beli sekarang</a>
+                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%2C%20saya%20ingin%20memesan%20produk%20Anda%20😁%0A%0A%5BDetail%20pesanan%5D%0ANama%20pemesan%20%3A%0AAlamat%20%3A%0ANo%20HP%20%3A%0ANama%20produk%20%3A%0AJumlah%20produk%20%3A%0APesan%20tanggal%20%3A%0AMetode%20%28diambil%20ditempat%20atau%20diantar%29%20%3A%0APembayaran%20menggunakan%20%3A%20cash%2Ftransfer%20%0A%0ANote%3A%20informasi%20selanjutnya%20dapat%20ditanyakan%20dan%20akan%20dijawab%20langsung%20oleh%20admin`}>Beli sekarang</a>
                                     </div>
                                 }
                             </div>
