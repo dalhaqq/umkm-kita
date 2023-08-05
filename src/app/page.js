@@ -11,9 +11,6 @@ export default function Home() {
     fetch('https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/Sheet1')
       .then((res) => res.json())
       .then((res) => {
-        res.forEach((item, index, array) => {
-          array[index].gambar = item.gambar.split(',')
-        })
         setUmkm(res)
         setLoading(false)
         console.log(res)
@@ -27,7 +24,7 @@ export default function Home() {
       <div className="row">
         {umkm.map(item => (
           <div className="col-4 card" key={item.slug}>
-            <img src={item.gambar} style={{width: '100%', objectFit: 'cover'}} />
+            <img src={item.gambar1} style={{width: '100%', objectFit: 'cover'}} />
             <div className="container">
               <a href={item.slug}>
                 <h4><b>{item.nama}</b></h4>

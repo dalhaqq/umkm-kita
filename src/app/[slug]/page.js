@@ -35,17 +35,18 @@ export default function Home({ params }) {
                     </div>
                 </div>
             </header>
-
             <main>
                 <section className="hero">
                     <div className="container">
                         <div className="hero-inner">
                             <div className="hero-copy">
-                                <h1 className="hero-title mt-0">{ umkm.nama }</h1>
-                                <p className="hero-paragraph">{ umkm.text1 }</p>
-                                <div className="hero-cta">
-                                    <a className="button button-primary" href="#">Buy it now</a>
-                                </div>
+                                <h1 className="hero-title mt-0">{umkm.nama}</h1>
+                                <p className="hero-paragraph">{umkm.text1}</p>
+                                {umkm.wa &&
+                                    <div className="hero-cta">
+                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%20saya%20ingin%20membeli%20produk%20${umkm.nama}`}>Beli sekarang</a>
+                                    </div>
+                                }
                             </div>
                             <div className="hero-media">
                                 <div className="header-illustration">
@@ -57,28 +58,26 @@ export default function Home({ params }) {
                                     <img className="hero-media-illustration-image asset-dark" src="/images/hero-media-illustration-dark.svg" alt="Hero media illustration" />
                                 </div>
                                 <div className="hero-media-container">
-                                    <Image className="hero-media-image asset-light" width="350" height="350" src={'/'+umkm.gambar} alt="Hero media"/>
-                                    <Image className="hero-media-image asset-dark" width="350" height="350" src={'/'+umkm.gambar} alt="Hero media"/>
+                                    <Image className="hero-media-image asset-light" width="350" height="350" src={'/' + umkm.gambar1} alt="Hero media" />
+                                    <Image className="hero-media-image asset-dark" width="350" height="350" src={'/' + umkm.gambar1} alt="Hero media" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-
                 <section className="features section">
                     <div className="container">
                         <div className="features-inner section-inner has-bottom-divider">
                             <div className="features-header text-center">
                                 <div className="container-sm">
-                                    <h2 className="section-title mt-0">The Product</h2>
-                                    <p className="section-paragraph">Lorem ipsum is common placeholder text used to
-                                        demonstrate the graphic elements of a document or visual presentation.</p>
+                                    <h2 className="section-title mt-0">Produk</h2>
+                                    <p className="section-paragraph">{umkm.text2}</p>
                                     <div className="features-image">
                                         <img className="features-illustration asset-dark" src="/images/features-illustration-dark.svg" alt="Feature illustration" />
-                                        <img className="features-box asset-dark" src="/images/features-box-dark.svg" alt="Feature box" />
+                                        <img className="features-box asset-dark" src={'/' + umkm.gambar2} alt="Feature box" />
                                         <img className="features-illustration asset-dark" src="/images/features-illustration-top-dark.svg" alt="Feature illustration top" />
                                         <img className="features-illustration asset-light" src="/images/features-illustration-light.svg" alt="Feature illustration" />
-                                        <img className="features-box asset-light" src="/images/features-box-light.svg" alt="Feature box" />
+                                        <img className="features-box asset-light" src={'/' + umkm.gambar2} alt="Feature box" />
                                         <img className="features-illustration asset-light" src="/images/features-illustration-top-light.svg" alt="Feature illustration top" />
                                     </div>
                                 </div>
@@ -86,43 +85,37 @@ export default function Home({ params }) {
                             <div className="features-wrap">
                                 <div className="feature is-revealing">
                                     <div className="feature-inner">
-                                        <div className="feature-icon">
+                                        {/* <div className="feature-icon">
                                             <img className="asset-light" src="/images/feature-01-light.svg" alt="Feature 01" />
                                             <img className="asset-dark" src="/images/feature-01-dark.svg" alt="Feature 01" />
-                                        </div>
+                                        </div> */}
                                         <div className="feature-content">
-                                            <h3 className="feature-title mt-0">Discover</h3>
-                                            <p className="text-sm mb-0">Lorem ipsum dolor sit amet, consecte adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                                                dui.</p>
+                                            <h3 className="feature-title mt-0">{umkm.sub1}</h3>
+                                            <p className="text-sm mb-0">{umkm.textsub1}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="feature is-revealing">
                                     <div className="feature-inner">
-                                        <div className="feature-icon">
+                                        {/* <div className="feature-icon">
                                             <img className="asset-light" src="/images/feature-02-light.svg" alt="Feature 02" />
                                             <img className="asset-dark" src="/images/feature-02-dark.svg" alt="Feature 02" />
-                                        </div>
+                                        </div> */}
                                         <div className="feature-content">
-                                            <h3 className="feature-title mt-0">Discover</h3>
-                                            <p className="text-sm mb-0">Lorem ipsum dolor sit amet, consecte adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                                                dui.</p>
+                                            <h3 className="feature-title mt-0">{umkm.sub2}</h3>
+                                            <p className="text-sm mb-0">{umkm.textsub2}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="feature is-revealing">
                                     <div className="feature-inner">
-                                        <div className="feature-icon">
+                                        {/* <div className="feature-icon">
                                             <img className="asset-light" src="/images/feature-03-light.svg" alt="Feature 03" />
                                             <img className="asset-dark" src="/images/feature-03-dark.svg" alt="Feature 03" />
-                                        </div>
+                                        </div> */}
                                         <div className="feature-content">
-                                            <h3 className="feature-title mt-0">Discover</h3>
-                                            <p className="text-sm mb-0">Lorem ipsum dolor sit amet, consecte adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                                                dui.</p>
+                                            <h3 className="feature-title mt-0">{umkm.sub3}</h3>
+                                            <p className="text-sm mb-0">{umkm.textsub3}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -130,23 +123,22 @@ export default function Home({ params }) {
                         </div>
                     </div>
                 </section>
-
                 <section className="cta section">
                     <div className="container-sm">
                         <div className="cta-inner section-inner">
                             <div className="cta-header text-center">
-                                <h2 className="section-title mt-0">Get it and Switch</h2>
-                                <p className="section-paragraph">Lorem ipsum is common placeholder text used to demonstrate
-                                    the graphic elements of a document or visual presentation.</p>
-                                <div className="cta-cta">
-                                    <a className="button button-primary" href="#">Buy it now</a>
-                                </div>
+                                <h2 className="section-title mt-0">{umkm.last}</h2>
+                                <p className="section-paragraph">{umkm.textlast}</p>
+                                {umkm.wa &&
+                                    <div className="cta-cta">
+                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%20saya%20ingin%20membeli%20produk%20${umkm.nama}`}>Beli sekarang</a>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
                 </section>
             </main>
-
             <footer className="site-footer has-top-divider">
                 <div className="container">
                     <div className="site-footer-inner">
@@ -156,22 +148,8 @@ export default function Home({ params }) {
                                 <img className="asset-dark" src="/images/logo-dark.svg" alt="Logo" />
                             </a>
                         </div>
-                        <ul className="footer-links list-reset">
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                            <li>
-                                <a href="#">About us</a>
-                            </li>
-                            <li>
-                                <a href="#">FAQ's</a>
-                            </li>
-                            <li>
-                                <a href="#">Support</a>
-                            </li>
-                        </ul>
                         <ul className="footer-social-links list-reset">
-                            <li>
+                            {umkm.fb && <li>
                                 <a href="#">
                                     <span className="screen-reader-text">Facebook</span>
                                     <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -180,29 +158,20 @@ export default function Home({ params }) {
                                             fill="#FFF" />
                                     </svg>
                                 </a>
-                            </li>
-                            <li>
+                            </li>}
+                            {umkm.ig && <li>
                                 <a href="#">
-                                    <span className="screen-reader-text">Twitter</span>
-                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z"
-                                            fill="#FFF" />
+                                    <span className="screen-reader-text">Instagram</span>
+                                    <svg width="24" height="24" viewBox='3 3 24 24' fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 5H9.5C7.29086 5 5.5 6.79086 5.5 9V15C5.5 17.2091 7.29086 19 9.5 19H15.5C17.7091 19 19.5 17.2091 19.5 15V9C19.5 6.79086 17.7091 5 15.5 5Z" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 15C10.8431 15 9.5 13.6569 9.5 12C9.5 10.3431 10.8431 9 12.5 9C14.1569 9 15.5 10.3431 15.5 12C15.5 12.7956 15.1839 13.5587 14.6213 14.1213C14.0587 14.6839 13.2956 15 12.5 15Z" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <rect x="16" y="1" width="2" height="2" rx="1" transform="rotate(-90 15.5 9)" fill="#ffffff" />
+                                        <rect x="16" y="-1.5" width="1" height="1" rx="0.5" transform="rotate(-90 16 8.5)" stroke="#ffffff" stroke-linecap="round" />
                                     </svg>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span className="screen-reader-text">Google</span>
-                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z"
-                                            fill="#FFF" />
-                                    </svg>
-                                </a>
-                            </li>
+                            </li>}
                         </ul>
-                        <div className="footer-copyright">&copy; { new Date().getFullYear() } { umkm.nama }, all rights reserved</div>
+                        <div className="footer-copyright">&copy; {new Date().getFullYear()} {umkm.nama}, all rights reserved</div>
                     </div>
                 </div>
             </footer>
