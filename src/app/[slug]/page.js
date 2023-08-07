@@ -4,18 +4,37 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 
 export default function Home({ params }) {
+
     const [umkm, setUmkm] = useState([])
     const [loading, setLoading] = useState(true)
+
+
     useEffect(() => {
-        fetch('https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/Sheet1')
-            .then((res) => res.json())
-            .then((res) => {
-                res = res.find(item => item.slug === params.slug)
-                setUmkm(res)
-                setLoading(false)
-                console.log(res)
-            })
-    }, [])
+        console.log(process.env.NEXT_PUBLIC_TEST)
+        const imgs = document.querySelectorAll('.features-image.fade');
+        if (imgs.length > 0) imgs[0].classList.add('active');
+        if (imgs.length > 1)
+            setInterval(() => {
+                const idx = Array.prototype.findIndex.call(imgs, (img) => {
+                    return img.classList.contains('active');
+                })
+                if (idx != -1) {
+                    imgs[idx].classList.remove('active');
+                    imgs[(idx + 1) % imgs.length].classList.add('active');
+                }
+                console.log('ch');
+            }, 2000);
+    }, [loading])
+
+
+    fetch('https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/Sheet1')
+        .then((res) => res.json())
+        .then((res) => {
+            res = res.find(item => item.slug === params.slug)
+            res.gambar = res.gambar.split(',')
+            setUmkm(res)
+            setLoading(false)
+        })
 
     if (loading) return <div>Loading...</div>
 
@@ -44,7 +63,7 @@ export default function Home({ params }) {
                                 <p className="hero-paragraph">{umkm.text1}</p>
                                 {umkm.wa &&
                                     <div className="hero-cta">
-                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%2C%20saya%20ingin%20memesan%20produk%20Anda%20😁%0A%0A%5BDetail%20pesanan%5D%0ANama%20pemesan%20%3A%0AAlamat%20%3A%0ANo%20HP%20%3A%0ANama%20produk%20%3A%0AJumlah%20produk%20%3A%0APesan%20tanggal%20%3A%0AMetode%20%28diambil%20ditempat%20atau%20diantar%29%20%3A%0APembayaran%20menggunakan%20%3A%20cash%2Ftransfer%20%0A%0ANote%3A%20informasi%20selanjutnya%20dapat%20ditanyakan%20dan%20akan%20dijawab%20langsung%20oleh%20admin`}>Beli sekarang</a>
+                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%2C%20saya%20ingin%20memesan%20produk%20Anda%20%0A%0A%5BDetail%20pesanan%5D%0ANama%20pemesan%20%3A%0AAlamat%20%3A%0ANo%20HP%20%3A%0ANama%20produk%20%3A%0AJumlah%20produk%20%3A%0APesan%20tanggal%20%3A%0AMetode%20%28diambil%20ditempat%20atau%20diantar%29%20%3A%0APembayaran%20menggunakan%20%3A%20cash%2Ftransfer%20%0A%0ANote%3A%20informasi%20selanjutnya%20dapat%20ditanyakan%20dan%20akan%20dijawab%20langsung%20oleh%20admin`}>Beli sekarang</a>
                                     </div>
                                 }
                             </div>
@@ -72,14 +91,16 @@ export default function Home({ params }) {
                                 <div className="container-sm">
                                     <h2 className="section-title mt-0">Produk</h2>
                                     <p className="section-paragraph">{umkm.text2}</p>
-                                    <div className="features-image">
-                                        <img className="features-illustration asset-dark" src="/images/features-illustration-dark.svg" alt="Feature illustration" />
-                                        <img className="features-box asset-dark" src={'/' + umkm.gambar2} alt="Feature box" />
-                                        <img className="features-illustration asset-dark" src="/images/features-illustration-top-dark.svg" alt="Feature illustration top" />
-                                        <img className="features-illustration asset-light" src="/images/features-illustration-light.svg" alt="Feature illustration" />
-                                        <img className="features-box asset-light" src={'/' + umkm.gambar2} alt="Feature box" />
-                                        <img className="features-illustration asset-light" src="/images/features-illustration-top-light.svg" alt="Feature illustration top" />
-                                    </div>
+                                    {umkm.gambar.map(gambar =>
+                                        <div className="features-image fade" key={gambar}>
+                                            <img className="features-illustration asset-dark" src="/images/features-illustration-dark.svg" alt="Feature illustration" />
+                                            <img className="features-box asset-dark" src={'/' + gambar} alt="Feature box" />
+                                            <img className="features-illustration asset-dark" src="/images/features-illustration-top-dark.svg" alt="Feature illustration top" />
+                                            <img className="features-illustration asset-light" src="/images/features-illustration-light.svg" alt="Feature illustration" />
+                                            <img className="features-box asset-light" src={'/' + gambar} alt="Feature box" />
+                                            <img className="features-illustration asset-light" src="/images/features-illustration-top-light.svg" alt="Feature illustration top" />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             <div className="features-wrap">
@@ -131,7 +152,7 @@ export default function Home({ params }) {
                                 <p className="section-paragraph">{umkm.textlast}</p>
                                 {umkm.wa &&
                                     <div className="cta-cta">
-                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%2C%20saya%20ingin%20memesan%20produk%20Anda%20😁%0A%0A%5BDetail%20pesanan%5D%0ANama%20pemesan%20%3A%0AAlamat%20%3A%0ANo%20HP%20%3A%0ANama%20produk%20%3A%0AJumlah%20produk%20%3A%0APesan%20tanggal%20%3A%0AMetode%20%28diambil%20ditempat%20atau%20diantar%29%20%3A%0APembayaran%20menggunakan%20%3A%20cash%2Ftransfer%20%0A%0ANote%3A%20informasi%20selanjutnya%20dapat%20ditanyakan%20dan%20akan%20dijawab%20langsung%20oleh%20admin`}>Beli sekarang</a>
+                                        <a className="button button-primary" href={`https://wa.me/${umkm.wa.replace('+', '')}?text=Halo%2C%20saya%20ingin%20memesan%20produk%20Anda%20%0A%0A%5BDetail%20pesanan%5D%0ANama%20pemesan%20%3A%0AAlamat%20%3A%0ANo%20HP%20%3A%0ANama%20produk%20%3A%0AJumlah%20produk%20%3A%0APesan%20tanggal%20%3A%0AMetode%20%28diambil%20ditempat%20atau%20diantar%29%20%3A%0APembayaran%20menggunakan%20%3A%20cash%2Ftransfer%20%0A%0ANote%3A%20informasi%20selanjutnya%20dapat%20ditanyakan%20dan%20akan%20dijawab%20langsung%20oleh%20admin`}>Beli sekarang</a>
                                     </div>
                                 }
                             </div>

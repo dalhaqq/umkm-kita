@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react';
 
-
 export default function Home() {
   const [umkm, setUmkm] = useState([])
   const [loading, setLoading] = useState(true)
@@ -20,20 +19,18 @@ export default function Home() {
   if (loading) return <div>Loading...</div>
 
   return (
-    <div className="container">
-      <div className="row">
+    <div className="card-container">
         {umkm.map(item => (
-          <div className="col-4 card" key={item.slug}>
+          <div className="column card" key={item.slug}>
             <img src={item.gambar1} style={{width: '100%', objectFit: 'cover'}} />
-            <div className="container">
+            <div className="card-body">
               <a href={item.slug}>
                 <h4><b>{item.nama}</b></h4>
               </a>
               <p>{item.text1}</p>
             </div>
-          </div >
+          </div>
         ))}
-      </div>
     </div>
   )
 }

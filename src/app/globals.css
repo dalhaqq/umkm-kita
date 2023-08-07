@@ -1593,6 +1593,14 @@ label {
   margin-bottom: 112px
 }
 
+.features-image.fade {
+  display: none;
+}
+
+.features-image.fade.active {
+  display: block;
+}
+
 .features-illustration {
   position: absolute;
   top: -2%;
@@ -2116,12 +2124,20 @@ hr::after,
 }
 
 /* Add some padding inside the card container */
-.container {
+.card-container {
   padding: 2px 16px;
+  width: 100%;
+  display: flex;
 }
 
-.col-4 {
-  float: left;
-  width: 33.33%;
-  padding: 0 10px;
+.column {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .column {
+    flex-grow: 1;
+  }
 }
