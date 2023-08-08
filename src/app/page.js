@@ -1,4 +1,16 @@
 import Image from 'next/image'
+const slug = process.env.NEXT_PUBLIC_SLUG
+
+export async function generateMetadata() {
+    const umkm = await fetch(`https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/data`)
+        .then((res) => res.json())
+        .then((res) => {
+            return res.find(item => item.slug === slug)
+        })
+    return {
+      title: umkm.nama,
+    }
+  }
 
 export default async function Home() {
 
@@ -7,7 +19,6 @@ export default async function Home() {
     // const [loading, setLoading] = useState(true)
     // const [loading1, setLoading1] = useState(true)
     // const [loading2, setLoading2] = useState(true)
-    const slug = process.env.NEXT_PUBLIC_SLUG
     
     const umkm = await fetch(`https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/data`)
         .then((res) => res.json())
