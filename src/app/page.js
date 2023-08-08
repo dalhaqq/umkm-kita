@@ -1,57 +1,28 @@
-"use client"
-
 import Image from 'next/image'
-import { useEffect, useState } from 'react';
 
-export default function Home({ params }) {
+export default async function Home() {
 
-    const [produk, setProduk] = useState([])
-    const [umkm, setUmkm] = useState({})
-    const [loading, setLoading] = useState(true)
-    const [loading1, setLoading1] = useState(true)
-    const [loading2, setLoading2] = useState(true)
+    // const [produk, setProduk] = useState([])
+    // const [umkm, setUmkm] = useState({})
+    // const [loading, setLoading] = useState(true)
+    // const [loading1, setLoading1] = useState(true)
+    // const [loading2, setLoading2] = useState(true)
     const slug = process.env.NEXT_PUBLIC_SLUG
     
-    useEffect(() => {
-        const imgs = document.querySelectorAll('.features-image.fade');
-        if (imgs.length > 0) imgs[0].classList.add('active');
-        if (imgs.length > 1)
-            setInterval(() => {
-                const idx = Array.prototype.findIndex.call(imgs, (img) => {
-                    return img.classList.contains('active');
-                })
-                if (idx != -1) {
-                    imgs[idx].classList.remove('active');
-                    imgs[(idx + 1) % imgs.length].classList.add('active');
-                }
-                console.log('ch');
-            }, 2000);
-    }, [loading])
+    const umkm = await fetch(`https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/data`)
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(slug)
+            res = res.find(item => item.slug === slug)
+            res.gambar = res.gambar2.split(',')
+            return res
+        })
 
-    useEffect(() => {
-        setLoading(loading1 || loading2)
-    }, [loading1, loading2])
-
-    useEffect(() => {
-        fetch(`https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/data`)
-            .then((res) => res.json())
-            .then((res) => {
-                console.log(slug)
-                res = res.find(item => item.slug === slug)
-                res.gambar = res.gambar2.split(',')
-                setUmkm(res)
-                setLoading1(false)
-            })
-    
-        fetch(`https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/${slug}-products`)
-            .then((res) => res.json())
-            .then((res) => {
-                setProduk(res)
-                setLoading2(false)
-            })
-    }, [])
-
-    if (loading) return <div>Loading...</div>
+    const produk = await fetch(`https://opensheet.elk.sh/1qni0IjhGNKLtkZYGpoFGWRQG3Jy_Dp7x3DZMBpIXFXk/${slug}-produk`)
+        .then((res) => res.json())
+        .then((res) => {
+            return res
+        })
 
     return (
         <div className="body-wrap boxed-container">
@@ -186,6 +157,7 @@ export default function Home({ params }) {
                     </div>
                 </div>
             </footer>
+            <script src="/js/page.js"></script>
         </div>
     )
 }
